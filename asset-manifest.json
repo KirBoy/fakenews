@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/KirBoy.github.io/fakenews/static/css/main.0d07c188.css",
-    "main.js": "/KirBoy.github.io/fakenews/static/js/main.67f056b7.js",
-    "index.html": "/KirBoy.github.io/fakenews/index.html",
-    "main.0d07c188.css.map": "/KirBoy.github.io/fakenews/static/css/main.0d07c188.css.map",
-    "main.67f056b7.js.map": "/KirBoy.github.io/fakenews/static/js/main.67f056b7.js.map"
+    "main.css": "/fakenews/static/css/main.0d07c188.css",
+    "main.js": "/fakenews/static/js/main.67f056b7.js",
+    "index.html": "/fakenews/index.html",
+    "main.0d07c188.css.map": "/fakenews/static/css/main.0d07c188.css.map",
+    "main.67f056b7.js.map": "/fakenews/static/js/main.67f056b7.js.map"
   },
   "entrypoints": [
     "static/css/main.0d07c188.css",
