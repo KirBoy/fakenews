@@ -1,0 +1,53 @@
+
+.user {
+  display: flex;
+  padding-top: 5px;
+}
+
+.user_left {
+  margin-right: 50px;
+}
+
+.user_right {
+  padding-top: 5px;
+  flex-grow: 1
+}
+
+.user_list {
+  max-width: 900px;
+  width: 100%;
+}
+
+.user_post-title {
+  font-weight: 500;
+  max-width: 700px;
+  margin-right: 30px;
+}
+
+.user_post + .user_post {
+  margin-top: 20px;
+}
+
+.user_link {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user_name {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.user_subtitle {
+  margin-bottom: 20px;
+}
+
+.user_ava {
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+.user__desc {
+  font-weight: 400;
+  font-size: 19px;
+}

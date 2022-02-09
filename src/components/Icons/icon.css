@@ -1,0 +1,16 @@
+
+.icon {
+  cursor: pointer;
+  color: #eaeaea;
+  display: flex;
+  align-items: flex-end;
+}
+
+.icon  + .icon {
+  margin-left: 25px;
+}
+
+.icon_name {
+  font-size: 20px;
+  margin-left: 5px;
+}

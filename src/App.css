@@ -1,38 +1,217 @@
-.App {
-  text-align: center;
+html {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+ul,
+ol {
+  padding: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+body {
+  font-family: 'Rubik', sans-serif;
+  background-color: #eeeeee;
+}
+
+.views {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.views_count {
+  margin-right: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn {
+  cursor: pointer;
+  color: #eeeeee;
+  background-color: #2f49ff;
+  min-width: 150px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  border-color: white;
+}
+
+.btn--big {
+  padding: 10px 15px;
+}
+
+.container {
+  position: relative;
+  margin: 0 100px;
+  padding-bottom: 30px;
+}
+
+.logo {
+  max-width: 50px;
+  margin-right: 20px;
+}
+
+.header {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  padding: 10px 100px 10px 100px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2f49ff;
+}
+
+.filters {
+  position: fixed;
+  left: 100px;
+  z-index: 2;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 300px;
+  padding: 15px 10px;
+  border: 2px solid #2f49ff;
+  background-color: #eaeaea;
+  color: #2f49ff;
+  border-radius: 10px;
+}
+
+.filter__name {
+  margin-right: 10px;
+}
+
+.filter--active {
+  background-color: #2f49ff;
+  color: #eaeaea;
+}
+
+.filter + .filter {
+  margin-top: 20px;
+}
+
+.header_icons {
+  display: flex;
+}
+
+.header_left {
+  display: flex;
+}
+
+.form-reg_fields {
+  margin-bottom: 20px;
+}
+
+.form-reg_title {
+  padding: 10px 0;
+}
+
+.form-reg_desc {
+  display: block;
+}
+
+.form__top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form__loader {
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("components/assets/commentLoader.svg");
+}
+
+.form__loader--small {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  background-image: url("components/assets/commentLoader.svg");
+}
+
+
+.form-reg_input {
+  display: block;
+  padding: 5px;
+}
+
+.form-reg_input--error {
+  border-color: red;
+}
+
+.form_error {
+  max-width: 260px;
+  display: inline-block;
+  padding-bottom: 10px;
+  color: red;
+  text-align: end;
+}
+
+.form-reg_label {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.form-reg_label + .form-reg_label {
+  margin-top: 15px;
+}
+
+.auth_btns {
+  display: flex;
+  justify-content: space-between;
 }
