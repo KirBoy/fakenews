@@ -1,1 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2500" height="2500" viewBox="74.41 197.715 446.46 446.46"><path fill="#FFF" d="M130.218 253.522h334.845v334.845H130.218V253.522z"/><path fill="#F57D00" d="M142.309 197.715c-38.135 0-67.898 29.764-67.898 67.899v311.592c0 37.205 29.764 66.969 67.898 66.969h311.592c37.205 0 66.97-29.764 66.97-66.969V265.614c0-38.135-29.765-67.899-66.97-67.899H142.309zm165.562 87.431c37.205 0 78.131 45.576 78.131 76.271v12.092c0 7.441 7.44 14.882 15.812 14.882h20.463c6.511 0 13.952 8.371 13.952 16.742v70.689c-1.86 50.227-47.437 82.781-84.642 82.781h-99.523c-51.156 0-90.222-41.855-90.222-83.711V366.998c1.86-42.786 39.065-81.851 84.642-81.851h61.387zm-58.597 70.69c-21.393.93-25.113 31.624 1.86 32.554h50.227c20.463-.93 17.672-31.624.93-32.554h-53.017zm-3.721 99.523c-18.603.931-18.603 29.765 0 31.625h103.244c20.463-2.791 20.463-31.625 0-31.625H245.553z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="50.995072017092866" height="50.24137814396886" style=""><rect id="backgroundrect" width="100%" height="100%" x="0" y="0" fill="none" stroke="none" style="" class=""/>
+ <!-- Created with SVG Editor - http://github.com/mzalive/SVG Editor/ -->
+
+ <g style="">
+  <title>background</title>
+  <rect fill="#f57d00" id="canvas_background" height="55" width="52" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" id="svg_2"/>
+  </g>
+ </g>
+ <g style="" class="currentLayer">
+  <title>Layer 1</title>
+  
+ <foreignObject fill="#ffffff" stroke="#000" stroke-width="0" stroke-dashoffset="" fill-rule="nonzero" font-size="47" font-family="Georgia, serif" letter-spacing="" word-spacing="" marker-start="" marker-mid="" marker-end="" x="65.79496037410455" y="46.74910458226458" width="41.14778371294928" height="40.177340917266065" style="color: rgb(0, 0, 0);" class="" id="svg_6"><p style="border: none;outline: none;font-size: inherit;line-height: 1em;padding:0;margin:0;" xmlns="http://www.w3.org/1999/xhtml"><p xmlns="http://www.w3.org/1999/xhtml" style="border: none;outline: none;font-size: inherit;line-height: 1em;padding:0;margin:0;" id="svg_7"><br style="border: none;outline: none;font-size: inherit;line-height: 1em;padding:0;margin:0;" /></p></p></foreignObject><foreignObject fill="#ffffff" stroke="#000" stroke-width="0" stroke-dashoffset="" fill-rule="nonzero" font-size="48" font-family="fantasy" letter-spacing="" word-spacing="" marker-start="" marker-mid="" marker-end="" id="svg_3" x="14.763546735048294" y="2.463054120540619" width="52" height="53" style="color: rgb(255, 255, 255); text-align: left;" class=""><p xmlns="http://www.w3.org/1999/xhtml" style="border: none;outline: none;font-size: inherit;line-height: 1em;padding:0;margin:0;">F</p></foreignObject></g>
+<style xmlns="http://www.w3.org/1999/xhtml">@import url(http://fonts.googleapis.com/css?family=Abhaya+Libre);</style></svg>

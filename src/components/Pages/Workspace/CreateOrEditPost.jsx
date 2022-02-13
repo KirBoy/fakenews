@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router";
 import {addNewPost, editPost, postIsFetching, resetPostStatus} from "../../redux/userReducer";
-import {postsAPI} from "../../api";
+import {postsAPI} from "../../api/apiPosts";
 import UploadFileOutlinedIcon from '@mui/icons-material/UploadFileOutlined';
 
 function CreateOrEditPost() {

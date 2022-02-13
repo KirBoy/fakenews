@@ -1,4 +1,5 @@
-import {postsAPI, profileAPI} from "../api";
+import {postsAPI} from "../../api/postsAPI";
+import {profileAPI} from "../../api/userApi";
 
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const DELETE_POST = 'DELETE_POST'

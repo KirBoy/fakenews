@@ -80,12 +80,13 @@
 }
 
 .comment_link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
 }
 
 .comment_avatar {
   margin-right: 10px;
+  background-color: #2f49ff !important;
 }
 
 .comment_inner {

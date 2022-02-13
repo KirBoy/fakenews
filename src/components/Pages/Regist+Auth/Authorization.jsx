@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import * as yup from "yup";
 import {authIsFetching, clearServerError, getAuthUser, setUserProfile} from "../../redux/authReducer";
 import {useDispatch, useSelector} from "react-redux";
-import {authAPI, getCurrentAxiosInstance} from "../../api";
+
 
 const style = {
     position: 'absolute',

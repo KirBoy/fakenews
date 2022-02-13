@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import SearchForm from "./SearchForm";
 import ProfileIcon from "./Icons/ProfileIcon";
-import RegisterOrAuth from "./Regist+Auth/RegisterOrAuth";
+import RegisterOrAuth from "./Pages/Regist+Auth/RegisterOrAuth";
 import CreatePostLink from "./Icons/EditPostsIcon";
 import LogoutIcon from "./Icons/LogoutIcon";
 import * as PropTypes from "prop-types";
