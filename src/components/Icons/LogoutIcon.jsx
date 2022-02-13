@@ -1,7 +1,7 @@
 import LogoutIcon from '@mui/icons-material/Logout';
 import React from "react";
 import './icon.css'
-import {userLogOut} from "../../redux/authReducer";
+import {userLogOut} from "../../redux/auth/authActions";
 import {useDispatch} from "react-redux";
 
 function LogOutIcon() {

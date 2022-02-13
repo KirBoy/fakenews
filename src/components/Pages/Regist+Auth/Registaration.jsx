@@ -4,8 +4,8 @@ import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {useDispatch, useSelector} from "react-redux";
-import {authIsFetching, setRegisterUser} from "../../redux/authReducer";
-
+import {authIsFetching, setRegisterUser} from "../../../redux/auth/authActions";
+import CloseIcon from '@mui/icons-material/Close';
 
 const style = {
     position: 'absolute',
@@ -27,13 +27,12 @@ const schema = yup.object({
 }).required();
 
 
-function Registration({setTab}) {
+function Registration({setTab, handleClose}) {
     const dispatch = useDispatch()
+    const {loadingStatus, serverError} = useSelector(state => state.auth)
     const {register, handleSubmit, formState: {errors}, setError, clearErrors} = useForm({
         resolver: yupResolver(schema)
     })
-    const loadingStatus = useSelector(state => state.auth.loadingStatus)
-    const serverError = useSelector(state => state.auth.serverError)
 
     if (serverError && !errors.email) {
         setError('email', {
@@ -68,6 +67,11 @@ function Registration({setTab}) {
 
         <Box sx={style}>
             <form onSubmit={handleSubmit(onSubmit)}>
+                <div className='form-reg_close' onClick={handleClose}>
+                    <CloseIcon sx={{
+                        fontSize: 30
+                    }}/>
+                </div>
                 <div className='form__top'>
                     <h3 className='form-reg_title'>Регистрация</h3>
                     {loadingStatus && <div className='form__loader form__loader--small'></div>}

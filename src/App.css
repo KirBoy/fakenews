@@ -97,6 +97,7 @@ body {
 .logo {
   max-width: 50px;
   margin-right: 20px;
+  border-radius: 5px;
 }
 
 .header {
@@ -209,6 +210,20 @@ body {
 
 .form-reg_label + .form-reg_label {
   margin-top: 15px;
+}
+
+.form-reg_close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-left: 2px solid #2f49ff;
+  border-bottom: 2px solid #2f49ff;
+  width: 35px;
+  height: 35px;
 }
 
 .auth_btns {

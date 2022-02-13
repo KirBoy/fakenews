@@ -1,6 +1,6 @@
-import {authAPI} from "../../../api/authAPI";
-import {getCurrentAxiosInstance} from "../../../api/AxiosInstance";
-import {profileAPI} from "../../../api/userApi";
+import {authAPI} from "../../api/authAPI";
+import {getCurrentAxiosInstance} from "../../api/AxiosInstance";
+import {profileAPI} from "../../api/userApi";
 
 const SET_USER = 'SET_USER'
 const SET_MODAL = 'SET_MODAL'

@@ -3,8 +3,9 @@ import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import Box from "@mui/material/Box";
 import * as yup from "yup";
-import {authIsFetching, clearServerError, getAuthUser, setUserProfile} from "../../redux/authReducer";
+import {authIsFetching, clearServerError, getAuthUser, setUserProfile} from "../../../redux/auth/authActions";
 import {useDispatch, useSelector} from "react-redux";
+import CloseIcon from "@mui/icons-material/Close";
 
 
 const style = {
@@ -24,10 +25,9 @@ const schema = yup.object({
     password: yup.string().required('Обязательно к заполнению').min(6, 'Пароль должен быть более 6 символов'),
 }).required();
 
-function Authorization({setTab}) {
+function Authorization({setTab, handleClose}) {
     const dispatch = useDispatch()
-    const loadingStatus = useSelector(state => state.auth.loadingStatus)
-    const serverError = useSelector(state => state.auth.serverError)
+    const {loadingStatus, serverError} = useSelector(state => state.auth)
     const {register, handleSubmit, formState: {errors}, setError, clearErrors} = useForm({
         resolver: yupResolver(schema)
     })
@@ -67,6 +67,11 @@ function Authorization({setTab}) {
 
         <Box sx={style}>
             <form onSubmit={handleSubmit(onSubmit)}>
+                <div className='form-reg_close' onClick={handleClose}>
+                    <CloseIcon sx={{
+                        fontSize: 30
+                    }}/>
+                </div>
                 <div className='form__top'>
                     <h3 className='form-reg_title'>Авторизация</h3>
                     {loadingStatus && <div className='form__loader form__loader--small'></div>}
@@ -83,11 +88,11 @@ function Authorization({setTab}) {
                         <p className='form_error'>{errors.email?.message}</p>
                         {errors.server && <p className='form_error'>{errors.server?.message}</p>}
                     </label>
-
                     <label className='form-reg_label'>
                         <div>
                             <span className='form-reg_desc'>Пароль</span>
-                            <input className={className('password')} type='password'
+                            <input className={className('password')}
+                                   type='password'
                                    {...register("password")}
                                    onChange={e => clearError(e, "password")}
                             />
@@ -96,15 +101,12 @@ function Authorization({setTab}) {
                     </label>
                 </div>
                 <div className='auth_btns'>
-                    <button className='btn' disabled={loadingStatus === 'fetching'} type='submit'>Войти
-                    </button>
+                    <button className='btn' disabled={loadingStatus === 'fetching'} type='submit'>Войти</button>
                     <button className='btn' onClick={changeTab}
                             disabled={loadingStatus === 'fetching'}>Зарегистрироваться
                     </button>
                 </div>
             </form>
-
-
         </Box>
     )
 }

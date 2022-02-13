@@ -1,8 +1,8 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import authReducer from "./authReducer";
+import authReducer from "./auth/authReducer";
 import thunk from "redux-thunk";
-import postsReducer from "./postsReducer";
-import userReducer from "./userReducer";
+import postsReducer from "./posts/postsReducer";
+import userReducer from "./user/userReducer";
 
 
 const reducers = combineReducers({

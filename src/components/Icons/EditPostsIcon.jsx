@@ -2,6 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import EditIcon from '@mui/icons-material/Edit';
 import './icon.css'
+
 function EditPostsIcon() {
     return (
         <Link to='/workspace' className='icon'>

@@ -2,28 +2,26 @@ import React, {useState} from "react";
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router";
-import {addNewPost, editPost, postIsFetching, resetPostStatus} from "../../redux/userReducer";
-import {postsAPI} from "../../api/apiPosts";
+import {addNewPost, editPost, postIsFetching, resetPostStatus} from "../../../redux/user/userAction";
+import {postsAPI} from "../../../api/postsAPI";
 import UploadFileOutlinedIcon from '@mui/icons-material/UploadFileOutlined';
 
 function CreateOrEditPost() {
     const [values, setValues] = React.useState({
         title: '',
         text: '',
-        photoUrl: null,
+        photoUrl: '',
         desc: '',
     })
-
     const [error, setError] = React.useState(false)
-
     const [isLoading, setIsLoading] = useState(true)
+    const dispatch = useDispatch()
     const params = useParams()
     const navigate = useNavigate();
     const post = useSelector(state => state.user.posts.filter(el => el._id === params.id))
     const postLoadingStatus = useSelector(state => state.user.postLoadingStatus)
-    const dispatch = useDispatch()
 
-    React.useEffect(async () => {
+    React.useEffect(() => {
         if (params.id) {
             setValues({
                 title: post[0].title,
@@ -39,25 +37,6 @@ function CreateOrEditPost() {
 
         setError(false)
 
-        if (e.target.name === 'title') {
-            setValues(prevState => {
-                return {
-                    ...prevState,
-                    title: e.target.value,
-                }
-            })
-        }
-
-        if (e.target.name === 'text') {
-
-            setValues(prevState => {
-                return {
-                    ...prevState,
-                    text: e.target.value,
-                }
-            })
-        }
-
         if (e.target.name === 'file') {
             const formData = new FormData()
             formData.append('file', e.target.files[0])
@@ -71,16 +50,12 @@ function CreateOrEditPost() {
                 }
             })
         }
-
-        if (e.target.name === 'desc') {
-            setValues(prevState => {
-                return {
-                    ...prevState,
-                    desc: e.target.value,
-                }
-            })
-        }
-
+        setValues(prevState => {
+            return {
+                ...prevState,
+                [e.target.name]: e.target.value,
+            }
+        })
     }
 
     if (postLoadingStatus === 'added') {
@@ -90,13 +65,13 @@ function CreateOrEditPost() {
 
     const onSubmit = (e) => {
         e.preventDefault()
+
         for (let value in values) {
             if (!values[value].trim()) {
                 setError(true)
                 return;
             }
         }
-
 
         if (params.id) {
             dispatch(postIsFetching())
@@ -114,34 +89,46 @@ function CreateOrEditPost() {
             <div className='workspace__inner'>
                 <div>
                     <label>Заголовок
-                        <textarea onChange={onChange} value={values.title}
-                                  className='workspace_create-title' name="title"
+                        <textarea onChange={onChange}
+                                  value={values.title}
+                                  className='workspace_create-title'
+                                  name="title"
                                   placeholder='Введите заголовок'>
-            </textarea>
+                        </textarea>
                     </label>
                     <label>Описание
-                        <textarea onChange={onChange} value={values.desc}
-                                  className='workspace_create-desc' name="desc"
+                        <textarea onChange={onChange}
+                                  value={values.desc}
+                                  className='workspace_create-desc'
+                                  name="desc"
                                   placeholder='Введите описание статьи'>
-            </textarea>
+                        </textarea>
                     </label>
                     <label>
                         Текст статьи
-                        <textarea onChange={onChange} className='workspace_create-text'
+                        <textarea onChange={onChange}
+                                  className='workspace_create-text'
                                   name="text"
                                   value={values.text}
                                   placeholder='Введите текст статьи'>
-            </textarea>
+                        </textarea>
                     </label>
                 </div>
                 <div className='workspace__files'>
-                    {values.photoUrl ? <img className='workspace__img' onLoad={event => setIsLoading(false)}
-                                            src={'http://localhost:5656' + values.photoUrl}
-                                            alt={values.title}/> : <div className='workspace__block'></div>}
+                    {values.photoUrl ?
+                        <img className='workspace__img'
+                             onLoad={event => setIsLoading(false)}
+                             src={'http://localhost:5656' + values.photoUrl}
+                             alt={values.title}/> :
+                        <div className='workspace__block'>
+                        </div>}
                     {isLoading && values.photoUrl && <div className='workspace__isloading'></div>}
                     <label className='workspace__label'>
-                        <input className='workspace__file' type="file" accept="image/png, , image/jpeg"
-                               onChange={onChange} name='file'/>
+                        <input className='workspace__file'
+                               type="file"
+                               accept="image/png,  image/jpeg"
+                               onChange={onChange}
+                               name='file'/>
                         <div className='workspace__upload'>
                             <span>Загрузить фото</span>
                             <div className='workspace__icon'>
@@ -152,7 +139,9 @@ function CreateOrEditPost() {
                 </div>
             </div>
             <div className='form__top'>
-                <button className='btn' type='submit' disabled={postLoadingStatus === 'fetching'&&!isLoading}>Отправить</button>
+                <button className='btn' type='submit'
+                        disabled={postLoadingStatus === 'fetching' && !isLoading}>Отправить
+                </button>
                 {postLoadingStatus === 'fetching' && <div className='form__loader form__loader--small'></div>}
                 {error && <p className='workspace__error'>Необходимо заполнить все поля</p>}
             </div>

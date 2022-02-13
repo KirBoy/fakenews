@@ -3,10 +3,9 @@ import Registration from "./Registaration";
 import React from "react";
 import Authorization from "./Authorization";
 import {useDispatch, useSelector} from "react-redux";
-import {setOpenModal} from "../../redux/authReducer";
+import {setOpenModal} from "../../../redux/auth/authActions";
 import './auth.css'
 import LoginIcon from '@mui/icons-material/Login';
-
 
 function RegisterOrAuth() {
     const modalOpen = useSelector(state => state.auth.modalOpen)
@@ -29,13 +28,13 @@ function RegisterOrAuth() {
             <Modal
                 open={modalOpen}
                 onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
+                BackdropProps={{
+                    timeout: 500,
+                }}
             >
                 <div>
-
-                    {!tab ? <Authorization setTab={setTab}/> :
-                        <Registration setTab={setTab}/>}
+                    {!tab ? <Authorization setTab={setTab} handleClose={handleClose}/>  :
+                        <Registration setTab={setTab} handleClose={handleClose}/>}
                 </div>
 
             </Modal>

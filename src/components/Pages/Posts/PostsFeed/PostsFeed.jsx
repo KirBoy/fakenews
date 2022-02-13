@@ -1,9 +1,9 @@
 import React from "react";
 import './postsFeed.css'
 import {useSelector} from "react-redux";
-import Filters from "../../common/Filters";
-import {PostsFeedLoader} from "../../common/Loaders";
 import PostPreview from "./PostPreview";
+import Filters from "../../../common/Filters";
+import {PostsFeedLoader} from "../../../common/Loaders";
 
 function PostsFeed() {
     const {posts, query, isLoading} = useSelector(state => state.posts)

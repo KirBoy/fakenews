@@ -74,6 +74,7 @@
 }
 
 .post__error {
+  font-size: 25px;
   padding-top: 30px;
   text-align: center;
 }

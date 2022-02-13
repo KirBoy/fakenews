@@ -1,24 +1,17 @@
-import React, {useEffect, useRef, useState} from "react";
+import React from "react";
 import {useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {
-    addComment, commentLoadingStatus,
-    deleteUserComment,
-    editComment,
     getPost,
-    postsIsLoading, resetCommentLoadingStatus, setEditComment
-} from "../../../redux/posts/postsReducer";
+    postsIsLoading,
+} from "../../../../redux/posts/postsActions";
 import {Link} from "react-router-dom";
-import Avatar from "@mui/material/Avatar";
 import style from './post.module.css'
-import ClearIcon from '@mui/icons-material/Clear';
-import EditIcon from '@mui/icons-material/Edit';
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import Filters from "../../common/Filters";
-import {PostLoader} from "../../common/Loaders";
-import {useForm} from "react-hook-form";
-import AddComment from "./Comment/AddComment";
-import Comment from "./Comment/Comment";
+import Filters from "../../../common/Filters";
+import {PostLoader} from "../../../common/Loaders";
+import AddComment from "../Comment/AddComment";
+import Comment from "../Comment/Comment";
 
 function Post() {
     const params = useParams();
@@ -58,7 +51,7 @@ function Post() {
                         </div>
                         <div className={style.post__description}>{description}</div>
                         <div className={style.post__text}>
-                            {handleText.map(el => el ? <p>{el}</p> : <br/>)}
+                            {handleText.map((el, i) => el ? <p key={i}>{el}</p> : <br key={i}/>)}
                         </div>
                         <ul className={style.post_comments}>
                             {comments.map(el => <Comment key={el._id}
@@ -84,7 +77,7 @@ function Post() {
 
 function Message() {
     return (
-        <p>Необходимо авторизоваться чтобы оставлять комментарии</p>
+        <p>Необходимо авторизоваться, чтобы оставлять комментарии</p>
     )
 }
 

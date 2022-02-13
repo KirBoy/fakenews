@@ -1,48 +1,40 @@
 import './App.css';
-import React, {useState} from "react";
+import React from "react";
 import {
     Routes,
-    Route, Link
+    Route
 } from "react-router-dom";
-import RegisterOrAuth from './components/Regist+Auth/RegisterOrAuth'
 import {useDispatch, useSelector} from "react-redux";
-import PostsFeed from "./components/Posts/PostsFeed";
-import Post from "./components/Posts/Post";
-import User from "./components/User/User";
-import {getUserAuthProfile, userLogOut} from "./redux/authReducer";
-import ProfileIcon from "./components/Icons/ProfileIcon";
-import WorkSpace from "./components/Workspace/WorkSpace";
-import CreatePostLink from "./components/Icons/EditPostsIcon";
+import PostsFeed from "./components/Pages/Posts/PostsFeed/PostsFeed";
+import Post from "./components/Pages/Posts/Post/Post";
+import User from "./components/Pages/User/User";
+import {getUserAuthProfile} from "./redux/auth/authActions";
+import WorkSpace from "./components/Pages/Workspace/WorkSpace";
 import PrivateRoute from "./components/PrivatHOC";
-import CreateOrEditPost from "./components/Workspace/CreateOrEditPost";
-import SearchForm from "./components/SearchForm";
-import LogoutIcon from "./components/Icons/LogoutIcon";
-import {addNewPosts, getPosts, postsIsLoading} from "./redux/postsReducer";
-import * as PropTypes from "prop-types";
-import Header from "./components/Header";
-
+import CreateOrEditPost from "./components/Pages/Workspace/CreateOrEditPost";
+import {addNewPosts, getPosts, postsIsLoading} from "./redux/posts/postsActions";
+import Header from "./components/common/Header";
 
 function App() {
     const dispatch = useDispatch()
     const auth = useSelector(state => state.auth.userAuth)
-    const filter = useSelector(state => state.posts.filter)
-    const query = useSelector(state => state.posts.query)
-    const currentPage = useSelector(state => state.posts.currentPage)
-    const totalPages = useSelector(state => state.posts.pages)
-    const posts = useSelector(state => state.user.posts)
+    const {filter, query, currentPage, pages} = useSelector(state => state.posts)
+    const postLoadingStatus = useSelector(state => state.user.posts)
 
     React.useEffect(() => {
         if (localStorage.getItem('token')) {
             dispatch(getUserAuthProfile(localStorage.getItem('id')))
         }
-
     }, [])
 
     React.useEffect(() => {
-        window.scrollTo(0, 0)
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
         dispatch(postsIsLoading())
         dispatch(getPosts())
-    }, [query, filter, posts.length])
+    }, [query, filter, postLoadingStatus])
 
 
     window.onscroll = () => {
@@ -51,7 +43,7 @@ function App() {
         const scrolled = window.scrollY
         const threshold = height - screenHeight / 2
         const position = scrolled + screenHeight
-        if (position >= threshold && totalPages >= currentPage && window.location.pathname === '/') {
+        if (position >= threshold && pages >= currentPage && window.location.pathname === '/') {
             dispatch(addNewPosts())
         }
     }
