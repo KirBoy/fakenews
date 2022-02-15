@@ -11,7 +11,7 @@ function User() {
     const dispatch = useDispatch()
     const user = useSelector(state => state.user)
     const date = new Date(user.createdAt).toLocaleDateString()
-
+    const authId = useSelector(state => state.auth.id)
     React.useEffect(() => {
         dispatch(userIsLoading())
         dispatch(getUserProfile(params.id))
@@ -32,12 +32,16 @@ function User() {
                         {user.posts.length ?
                             <ul className='user_list'>
                                 {user.posts.map(el => <UsersPosts key={el._id}
-                                                                   title={el.title}
-                                                                   createdAt={el.createdAt}
-                                                                   views={el.views}
-                                                                   id={el._id}/>)}
+                                                                  title={el.title}
+                                                                  createdAt={el.createdAt}
+                                                                  views={el.views}
+                                                                  id={el._id}/>)}
                             </ul> :
-                            <p className='user__desc'>Вы еще не создали ни одного поста.</p>}
+                            <p className='user__desc'>
+                                {authId === params.id ?
+                                    'Вы ' :
+                                    user.fullName + ' '}
+                                еще не создал ни одного поста.</p>}
                     </div>
                 </div>}
         </>

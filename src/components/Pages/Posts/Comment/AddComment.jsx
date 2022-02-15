@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {
@@ -21,10 +21,8 @@ function AddComment({postId, text, commentId, userId, fullName}) {
         }
     });
     const {isSubmitted} = formState
-
     const loadingStatus = useSelector(state => state.posts.commentLoadingStatus)
     const dispatch = useDispatch()
-    const avatar = fullName.split('').slice(0, 1).join('')
 
     if (loadingStatus === 'added' && isSubmitted) {
         setValue('comment', '')
@@ -60,15 +58,17 @@ function AddComment({postId, text, commentId, userId, fullName}) {
             <textarea className={style.form_textarea} {...register("comment")} name="comment">
             </textarea>
                 <div className={style.form_send}>
-                    {text ?
-                        <button className='btn' type='submit' disabled={loadingStatus === 'fetching'}>сохранить</button>
-                        :
-                        <button className='btn' type='submit' disabled={loadingStatus === 'fetching'}>отправить</button>}
-
+                    <button
+                        className='btn'
+                        type='submit'
+                        disabled={loadingStatus === 'fetching'}
+                    >
+                        {text? 'сохранить': 'отправить'}
+                    </button>
                     {loadingStatus === 'fetching' &&
                     loaderId === 'edit' &&
-                    <div className='form__loader form__loader--small'>
-                    </div>}
+                    <div className='form__loader form__loader--small'/>
+                    }
                     {loadingStatus === 'fetching' &&
                     loaderId === 'add' &&
                     <div className='form__loader form__loader--small'>

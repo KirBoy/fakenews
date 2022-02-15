@@ -1,5 +1,5 @@
 import './App.css';
-import React from "react";
+import React, {useEffect} from "react";
 import {
     Routes,
     Route
@@ -12,22 +12,22 @@ import {getUserAuthProfile} from "./redux/auth/authActions";
 import WorkSpace from "./components/Pages/Workspace/WorkSpace";
 import PrivateRoute from "./components/PrivatHOC";
 import CreateOrEditPost from "./components/Pages/Workspace/CreateOrEditPost";
-import {addNewPosts, getPosts, postsIsLoading} from "./redux/posts/postsActions";
 import Header from "./components/common/Header";
+import {getPosts, postsIsLoading} from "./redux/posts/postsActions";
 
 function App() {
     const dispatch = useDispatch()
     const auth = useSelector(state => state.auth.userAuth)
-    const {filter, query, currentPage, pages} = useSelector(state => state.posts)
+    const {query, filter, posts} = useSelector(state => state.posts)
     const postLoadingStatus = useSelector(state => state.user.posts)
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (localStorage.getItem('token')) {
             dispatch(getUserAuthProfile(localStorage.getItem('id')))
         }
     }, [])
 
-    React.useEffect(() => {
+    useEffect(() => {
         window.scrollTo({
             top: 0,
             behavior: "smooth"
@@ -35,18 +35,6 @@ function App() {
         dispatch(postsIsLoading())
         dispatch(getPosts())
     }, [query, filter, postLoadingStatus])
-
-
-    window.onscroll = () => {
-        const height = document.body.offsetHeight
-        const screenHeight = window.innerHeight
-        const scrolled = window.scrollY
-        const threshold = height - screenHeight / 2
-        const position = scrolled + screenHeight
-        if (position >= threshold && pages >= currentPage && window.location.pathname === '/') {
-            dispatch(addNewPosts())
-        }
-    }
 
 
     return (
@@ -58,10 +46,18 @@ function App() {
                     <Route path="/posts/:id" element={<Post/>}/>
                     <Route path='/user/:id' element={<User/>}/>
                     <Route path='/workspace/edit/:id'
-                           element={<PrivateRoute><CreateOrEditPost/></PrivateRoute>}/>
+                           element={
+                               <PrivateRoute>
+                                   <CreateOrEditPost/>
+                               </PrivateRoute>}/>
                     <Route path='/workspace/create'
-                           element={<PrivateRoute><CreateOrEditPost/></PrivateRoute>}/>
-                    <Route path='/workspace' element={<PrivateRoute><WorkSpace/></PrivateRoute>}/>
+                           element={
+                               <PrivateRoute>
+                                   <CreateOrEditPost/>
+                               </PrivateRoute>}/>
+                    <Route path='/workspace' element={<PrivateRoute>
+                        <WorkSpace/>
+                    </PrivateRoute>}/>
                     <Route
                         path="*"
                         element={
