@@ -1,5 +1,6 @@
 import {profileAPI} from "../../api/userApi";
 import {postsAPI} from "../../api/postsAPI";
+import {commentAPI} from "../../api/commentsAPI";
 
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const DELETE_POST = 'DELETE_POST'
@@ -75,8 +76,9 @@ export const addNewPost = ({title, text, photoUrl, desc}) => async (dispatch) =>
 }
 
 export const deleteUserPost = (id) => async (dispatch) => {
+
     await postsAPI.delPost(id)
-    const responseComments = await postsAPI.comments(id)
+    const responseComments = await commentAPI.comments(id)
 
     for (const comment of responseComments) {
         await postsAPI.delComment(comment._id)
